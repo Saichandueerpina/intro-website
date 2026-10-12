@@ -1,0 +1,240 @@
+/* ---------- Theme colors ---------- */
+:root {
+  --bg: #f2f5fa;
+  --surface: #ffffff;
+  --ink: #14213d;
+  --muted: #4d5b78;
+  --accent: #2f5bff;
+  --accent-ink: #ffffff;
+  --highlight: #ffd23f;
+  --line: #d5dcea;
+  --radius: 14px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e1424;
+  --surface: #172036;
+  --ink: #eef2fb;
+  --muted: #a5b1cc;
+  --accent: #7d9bff;
+  --accent-ink: #0e1424;
+  --line: #2a3654;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+a { color: var(--accent); }
+code {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  font-size: 0.92em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem clamp(1rem, 5vw, 3rem);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.site-header nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+.site-header nav a:hover { color: var(--accent); }
+
+.icon-btn {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(4rem, 14vw, 9rem) clamp(1rem, 5vw, 3rem) clamp(3rem, 9vw, 6rem);
+  max-width: 62rem;
+  margin: 0 auto;
+}
+
+.hero-kicker {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.25rem 0.8rem;
+  background: var(--highlight);
+  color: #14213d;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.hero h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.typed { color: var(--accent); }
+.typed::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  background: currentColor;
+  vertical-align: -0.08em;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-sub {
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+  margin: 0 0 2rem;
+}
+
+.btn {
+  display: inline-block;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 700;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-ink);
+  transition: transform 0.15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+/* ---------- Sections ---------- */
+.section {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 4.5rem) clamp(1rem, 5vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.section h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+}
+
+.section p { max-width: 42rem; color: var(--muted); }
+
+/* ---------- Team cards ---------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.avatar {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #14213d;
+  background: var(--highlight);
+  margin-bottom: 1rem;
+}
+
+.card h3 { margin: 0; font-size: 1.3rem; }
+.card .role { margin: 0 0 0.75rem; color: var(--accent); font-weight: 700; }
+.card .bio { margin: 0 0 1rem; }
+.card a { font-weight: 600; }
+
+/* ---------- Skill chips ---------- */
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  margin: 1.25rem 0 0;
+}
+
+.chips li {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.status { min-height: 1.5rem; margin-top: 0.75rem; color: var(--accent); font-weight: 600; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .typed::after { animation: none; }
+  .btn { transition: none; }
+}

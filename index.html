@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello, we're Team Practice</title>
+  <meta name="description" content="A simple introduction website for practicing Git and GitHub with a friend.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top">Team Practice</a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle" class="icon-btn" aria-label="Switch theme">◐</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <p class="hero-kicker">Git &amp; GitHub practice project</p>
+      <h1>
+        Hi, we're <span id="typed-name" class="typed" aria-live="polite">Your Name</span>
+      </h1>
+      <p class="hero-sub">
+        Two friends learning to build websites together, one commit at a time.
+      </p>
+      <a class="btn" href="#team">Meet the team</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <h2>About this project</h2>
+      <p>
+        This site is a starting point. Change the text, colors and layout, then
+        push your changes to GitHub and let your friend pull them. Every edit you
+        make is a chance to practice <code>commit</code>, <code>push</code>,
+        <code>pull</code>, branches and pull requests.
+      </p>
+      <!-- TODO (practice task 1): rewrite this paragraph in your own words. -->
+    </section>
+
+    <!-- TEAM: cards are generated from js/members.js -->
+    <section id="team" class="section">
+      <h2>The team</h2>
+      <div id="team-grid" class="team-grid"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2>What we're learning</h2>
+      <ul id="skills-list" class="chips"></ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <h2>Say hello</h2>
+      <p>Click the button to copy our team email, then paste it anywhere.</p>
+      <button id="copy-email" class="btn" data-email="hello@example.com">Copy email</button>
+      <p id="copy-status" class="status" role="status"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with HTML, CSS and JavaScript. <span id="year"></span></p>
+  </footer>
+
+  <script src="js/members.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
