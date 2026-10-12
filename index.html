@@ -1,72 +1,515 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello, we're Team Practice</title>
-  <meta name="description" content="A simple introduction website for practicing Git and GitHub with a friend.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Team Practice | Learn, Build & Grow</title>
+
+  <meta name="description"
+    content="A collaborative website for learning HTML, CSS, JavaScript, Git and GitHub through hands-on projects.">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+  <!-- HEADER -->
   <header class="site-header">
-    <a class="logo" href="#top">Team Practice</a>
-    <nav aria-label="Main">
+    <a class="logo" href="#top">Team<span>Practice.</span></a>
+
+    <nav class="nav-links" id="nav-links" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#team">Team</a>
       <a href="#skills">Skills</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
-      <button id="theme-toggle" class="icon-btn" aria-label="Switch theme">◐</button>
+      <button id="theme-toggle" class="icon-btn"
+        type="button" aria-label="Switch to dark theme">◐</button>
     </nav>
+
+    <button id="menu-toggle" class="menu-btn"
+      type="button" aria-label="Toggle navigation"
+      aria-expanded="false">☰</button>
   </header>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <p class="hero-kicker">Git &amp; GitHub practice project</p>
-      <h1>
-        Hi, we're <span id="typed-name" class="typed" aria-live="polite">Your Name</span>
-      </h1>
-      <p class="hero-sub">
-        Two friends learning to build websites together, one commit at a time.
-      </p>
-      <a class="btn" href="#team">Meet the team</a>
+      <div class="hero-content">
+        <p class="hero-kicker">LEARN TOGETHER • BUILD TOGETHER</p>
+
+        <h1>
+          We are <span id="typed-name" class="typed">Team Practice</span>
+          <br>building our future in tech.
+        </h1>
+
+        <p class="hero-sub">
+          We are aspiring web developers learning to create modern websites,
+          solve problems, and collaborate using Git and GitHub.
+          Every line of code takes us one step forward.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#team">Meet Our Team →</a>
+          <a class="btn btn-outline" href="#projects">Explore Projects</a>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <strong>01</strong>
+            <span>Teamwork</span>
+          </div>
+          <div>
+            <strong>02</strong>
+            <span>Learning</span>
+          </div>
+          <div>
+            <strong>03</strong>
+            <span>Building</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Coding illustration">
+        <div class="code-window">
+          <div class="window-bar">
+            <span></span><span></span><span></span>
+            <small>team-project.js</small>
+          </div>
+          <pre><code><span class="code-purple">const</span> team = {
+  learning: <span class="code-green">true</span>,
+  teamwork: <span class="code-green">true</span>,
+  creativity: <span class="code-green">true</span>
+};
+
+<span class="code-purple">function</span> <span class="code-blue">buildFuture</span>() {
+  <span class="code-purple">return</span> team;
+}
+
+console.log(buildFuture());</code></pre>
+          <div class="code-footer">✓ Ready to build something great</div>
+        </div>
+        <div class="floating-badge badge-one">{"</>"} HTML</div>
+        <div class="floating-badge badge-two">JS · CSS · Git</div>
+      </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
-      <h2>About this project</h2>
-      <p>
-        This site is a starting point. Change the text, colors and layout, then
-        push your changes to GitHub and let your friend pull them. Every edit you
-        make is a chance to practice <code>commit</code>, <code>push</code>,
-        <code>pull</code>, branches and pull requests.
-      </p>
-      <!-- TODO (practice task 1): rewrite this paragraph in your own words. -->
+      <div class="section-heading">
+        <p class="eyebrow">WHO WE ARE</p>
+        <h2>About Our Team</h2>
+        <p>
+          A small team with big goals, learning modern web development
+          by building real projects and sharing knowledge.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <article class="info-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>
+            Our mission is to develop practical programming skills,
+            build useful websites, and understand how developers
+            work together on real software projects.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="feature-icon">🚀</div>
+          <h3>Our Vision</h3>
+          <p>
+            We want to become confident developers who can design
+            user-friendly interfaces, write clean code, and deploy
+            reliable applications.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Our Values</h3>
+          <p>
+            We believe in teamwork, consistency, curiosity, sharing
+            knowledge, accepting feedback, and learning from mistakes.
+          </p>
+        </article>
+      </div>
+
+      <div class="story-panel">
+        <div>
+          <p class="eyebrow">OUR STORY</p>
+          <h3>Small steps. Real progress.</h3>
+        </div>
+        <p>
+          This project started as a way for friends to practice HTML,
+          CSS, JavaScript, Git, and GitHub. We create features, commit
+          changes, review each other's work, fix errors, and improve
+          the website one step at a time.
+        </p>
+      </div>
     </section>
 
-    <!-- TEAM: cards are generated from js/members.js -->
-    <section id="team" class="section">
-      <h2>The team</h2>
+    <!-- TEAM -->
+    <section id="team" class="section section-alt">
+      <div class="section-heading">
+        <p class="eyebrow">THE PEOPLE BEHIND THE CODE</p>
+        <h2>Meet Our Team</h2>
+        <p>
+          Different ideas, shared goals, and a passion for learning.
+          Meet the people building this project.
+        </p>
+      </div>
+
       <div id="team-grid" class="team-grid"></div>
     </section>
 
     <!-- SKILLS -->
     <section id="skills" class="section">
-      <h2>What we're learning</h2>
+      <div class="section-heading">
+        <p class="eyebrow">OUR TOOLKIT</p>
+        <h2>Skills We're Learning</h2>
+        <p>
+          These technologies help us create websites, manage code,
+          collaborate with teammates, and publish our work.
+        </p>
+      </div>
+
       <ul id="skills-list" class="chips"></ul>
+
+      <div class="skills-grid">
+        <article class="skill-card">
+          <h3>🌐 Frontend Development</h3>
+          <p>Building the parts of a website that users see and interact with.</p>
+          <div class="progress-track"><span style="width: 65%"></span></div>
+          <small>Practice goal: build responsive interfaces</small>
+        </article>
+
+        <article class="skill-card">
+          <h3>🧠 JavaScript</h3>
+          <p>Adding interactivity, event handling, and dynamic content.</p>
+          <div class="progress-track"><span style="width: 45%"></span></div>
+          <small>Practice goal: write reusable functions</small>
+        </article>
+
+        <article class="skill-card">
+          <h3>🔀 Git & GitHub</h3>
+          <p>Tracking changes, sharing code, and working with branches.</p>
+          <div class="progress-track"><span style="width: 55%"></span></div>
+          <small>Practice goal: collaborate through pull requests</small>
+        </article>
+      </div>
+
+      <p class="note">
+        The progress bars are illustrative learning goals, not measured
+        assessments. Update them to reflect your actual progress.
+      </p>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="section section-alt">
+      <div class="section-heading">
+        <p class="eyebrow">OUR LEARNING JOURNEY</p>
+        <h2>Development Roadmap</h2>
+        <p>
+          Our step-by-step plan for moving from basic web pages
+          to deployed projects.
+        </p>
+      </div>
+
+      <div class="roadmap">
+        <article class="roadmap-item">
+          <span class="roadmap-number">01</span>
+          <div>
+            <h3>HTML Fundamentals</h3>
+            <p>
+              Learn headings, paragraphs, links, images, forms,
+              semantic elements, and page structure.
+            </p>
+            <span class="tag">Structure</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-number">02</span>
+          <div>
+            <h3>CSS & Responsive Design</h3>
+            <p>
+              Practice colors, spacing, Flexbox, Grid, animations,
+              media queries, and mobile-friendly layouts.
+            </p>
+            <span class="tag">Design</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-number">03</span>
+          <div>
+            <h3>JavaScript Fundamentals</h3>
+            <p>
+              Understand variables, arrays, objects, functions,
+              DOM manipulation, events, and browser APIs.
+            </p>
+            <span class="tag">Interactivity</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-number">04</span>
+          <div>
+            <h3>Git & GitHub Collaboration</h3>
+            <p>
+              Learn repositories, commits, push, pull, branches,
+              merge conflicts, and pull requests.
+            </p>
+            <span class="tag">Teamwork</span>
+          </div>
+        </article>
+
+        <article class="roadmap-item">
+          <span class="roadmap-number">05</span>
+          <div>
+            <h3>Projects & Deployment</h3>
+            <p>
+              Build a portfolio, test it on different devices,
+              and publish it using GitHub Pages or another host.
+            </p>
+            <span class="tag">Launch</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">WHAT WE BUILD</p>
+        <h2>Our Projects</h2>
+        <p>
+          Practical projects help turn programming concepts
+          into working applications.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-visual visual-blue">
+            <span>01</span>
+            <div class="project-symbol">{"</>"}</div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Frontend</span>
+            <h3>Team Introduction Website</h3>
+            <p>
+              A responsive team website with profile cards,
+              a skills section, theme switching, and JavaScript interactions.
+            </p>
+            <p class="project-tech">HTML · CSS · JavaScript</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-visual visual-yellow">
+            <span>02</span>
+            <div class="project-symbol">✓</div>
+          </div>
+          <div class="project-content">
+            <span class="tag">JavaScript</span>
+            <h3>Task Manager</h3>
+            <p>
+              A practice application for adding tasks, marking
+              them complete, and learning event handling.
+            </p>
+            <p class="project-tech">DOM · Arrays · Events</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-visual visual-purple">
+            <span>03</span>
+            <div class="project-symbol">↗</div>
+          </div>
+          <div class="project-content">
+            <span class="tag">Collaboration</span>
+            <h3>GitHub Practice Project</h3>
+            <p>
+              A shared repository where teammates make changes,
+              review code, resolve conflicts, and merge improvements.
+            </p>
+            <p class="project-tech">Git · GitHub · VS Code</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section id="workflow" class="section section-alt">
+      <div class="section-heading">
+        <p class="eyebrow">HOW WE COLLABORATE</p>
+        <h2>Our Git & GitHub Workflow</h2>
+        <p>
+          We use version control to keep track of our code
+          and work safely with other developers.
+        </p>
+      </div>
+
+      <div class="workflow-grid">
+        <article class="workflow-card">
+          <span class="step">01</span>
+          <h3>Clone</h3>
+          <p>Download a repository from GitHub to your computer.</p>
+          <code>git clone REPOSITORY_URL</code>
+        </article>
+
+        <article class="workflow-card">
+          <span class="step">02</span>
+          <h3>Edit</h3>
+          <p>Open the project in VS Code and make your changes.</p>
+          <code>code .</code>
+        </article>
+
+        <article class="workflow-card">
+          <span class="step">03</span>
+          <h3>Stage & Commit</h3>
+          <p>Prepare changes and save a snapshot in Git history.</p>
+          <code>git add .</code>
+          <code>git commit -m "Update website"</code>
+        </article>
+
+        <article class="workflow-card">
+          <span class="step">04</span>
+          <h3>Push</h3>
+          <p>Upload your committed changes to GitHub.</p>
+          <code>git push origin main</code>
+        </article>
+
+        <article class="workflow-card">
+          <span class="step">05</span>
+          <h3>Pull</h3>
+          <p>Download and integrate the latest changes from GitHub.</p>
+          <code>git pull origin main</code>
+        </article>
+
+        <article class="workflow-card">
+          <span class="step">06</span>
+          <h3>Review & Merge</h3>
+          <p>Use a pull request to review and combine branch changes.</p>
+          <code>git switch -c feature/about</code>
+        </article>
+      </div>
+
+      <div class="callout">
+        <h3>💡 Important Git tip</h3>
+        <p>
+          Before starting work with a teammate, check your branch
+          and working tree. Pull the latest changes when appropriate,
+          and commit meaningful changes with clear messages.
+          Avoid editing the same lines at the same time when possible.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">QUICK ANSWERS</p>
+        <h2>Frequently Asked Questions</h2>
+        <p>Some important concepts we use while learning web development.</p>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>What is HTML?</summary>
+          <p>
+            HTML stands for HyperText Markup Language. It defines the
+            structure and content of a webpage using elements such as
+            headings, paragraphs, links, and sections.
+          </p>
+        </details>
+
+        <details>
+          <summary>What is CSS?</summary>
+          <p>
+            CSS stands for Cascading Style Sheets. It controls how a
+            webpage looks, including colors, layouts, fonts, spacing,
+            animations, and responsive behavior.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why do we use JavaScript?</summary>
+          <p>
+            JavaScript makes websites interactive. In this project,
+            it generates team cards, changes themes, displays typed
+            names, and copies the contact email.
+          </p>
+        </details>
+
+        <details>
+          <summary>What is the difference between Git and GitHub?</summary>
+          <p>
+            Git is a version control system that tracks changes to files.
+            GitHub is an online platform for hosting Git repositories
+            and collaborating with other developers.
+          </p>
+        </details>
+
+        <details>
+          <summary>What is a pull request?</summary>
+          <p>
+            A pull request proposes changes from one branch into another.
+            Teammates can inspect the code, discuss improvements,
+            and approve the changes before merging.
+          </p>
+        </details>
+
+        <details>
+          <summary>How can we publish this website?</summary>
+          <p>
+            You can publish a static HTML, CSS, and JavaScript website
+            using GitHub Pages or another static hosting service.
+            Make sure your file paths and repository settings are correct.
+          </p>
+        </details>
+      </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section">
-      <h2>Say hello</h2>
-      <p>Click the button to copy our team email, then paste it anywhere.</p>
-      <button id="copy-email" class="btn" data-email="hello@example.com">Copy email</button>
-      <p id="copy-status" class="status" role="status"></p>
+    <section id="contact" class="section contact-section">
+      <div class="contact-panel">
+        <p class="eyebrow">LET'S CONNECT</p>
+        <h2>Have an idea? Let's build it.</h2>
+        <p>
+          We are always ready to learn, collaborate, exchange ideas,
+          and improve our projects together.
+        </p>
+
+        <div class="contact-actions">
+          <button id="copy-email" class="btn" type="button"
+            data-email="hello@example.com">Copy Team Email</button>
+
+          <a class="btn btn-outline" href="#team">Meet the Team</a>
+        </div>
+
+        <p id="copy-status" class="status" role="status"
+          aria-live="polite"></p>
+
+        <p class="contact-note">
+          Replace hello@example.com with your real team email.
+        </p>
+      </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <p>Built with HTML, CSS and JavaScript. <span id="year"></span></p>
+    <a class="logo" href="#top">Team<span>Practice.</span></a>
+    <p>
+      Built with curiosity, teamwork, HTML, CSS and JavaScript.
+    </p>
+    <p><span id="year"></span> · Keep learning. Keep building.</p>
   </footer>
 
   <script src="js/members.js"></script>

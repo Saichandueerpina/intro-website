@@ -1,23 +1,44 @@
-/*
-  TEAM DATA
-  ---------
-  Each person edits their OWN entry in this list.
-  Tip for practice: if you both edit this file on different branches,
-  you will get a merge conflict, and that is a great way to learn how to fix one!
-*/
+
+/* =====================================
+   TEAM MEMBER INFORMATION
+===================================== */
+
 const members = [
   {
-    name: "Your Name",
-    role: "Front-end learner",
-    bio: "Write two short sentences about yourself here.",
-    link: "https://github.com/your-username"
+    name: "Mani Krishna",
+    role: "Frontend Developer",
+    bio: "Learning HTML, CSS, JavaScript, responsive design, and GitHub collaboration by building practical web projects.",
+    link: "https://github.com/"
   },
   {
-    name: "Friend Name",
-    role: "Front-end learner",
-    bio: "Your friend replaces this text with their own bio.",
-    link: "https://github.com/friend-username"
+    name: "Your Friend",
+    role: "Web Developer",
+    bio: "Interested in creating user-friendly websites, solving coding problems, and learning new technologies.",
+    link: "https://github.com/"
+  },
+  {
+    name: "Team Member 3",
+    role: "UI Designer",
+    bio: "Exploring website layouts, typography, color combinations, accessibility, and modern user interface design.",
+    link: "https://github.com/"
   }
 ];
 
-const skills = ["HTML", "CSS", "JavaScript", "Git", "GitHub", "Pull requests"];
+/* =====================================
+   TECHNOLOGIES WE ARE LEARNING
+===================================== */
+
+const skills = [
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "Responsive Design",
+  "DOM Manipulation",
+  "Git",
+  "GitHub",
+  "VS Code",
+  "Debugging",
+  "Teamwork",
+  "Problem Solving",
+  "Web Accessibility"
+];

@@ -1,240 +1,1004 @@
-/* ---------- Theme colors ---------- */
+
+/* ==============================
+   1. THEME VARIABLES
+============================== */
 :root {
-  --bg: #f2f5fa;
+  color-scheme: light;
+  --bg: #f5f7fc;
   --surface: #ffffff;
-  --ink: #14213d;
-  --muted: #4d5b78;
-  --accent: #2f5bff;
+  --surface-alt: #edf2ff;
+  --ink: #17213d;
+  --muted: #66718b;
+  --accent: #315efb;
+  --accent-hover: #2147d6;
   --accent-ink: #ffffff;
-  --highlight: #ffd23f;
-  --line: #d5dcea;
-  --radius: 14px;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --highlight: #ffda68;
+  --line: #dce3f0;
+  --shadow: 0 12px 35px rgba(28, 48, 95, 0.07);
+  --radius: 18px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 :root[data-theme="dark"] {
-  --bg: #0e1424;
-  --surface: #172036;
-  --ink: #eef2fb;
-  --muted: #a5b1cc;
-  --accent: #7d9bff;
-  --accent-ink: #0e1424;
-  --line: #2a3654;
+  color-scheme: dark;
+  --bg: #0d1425;
+  --surface: #151f35;
+  --surface-alt: #111b30;
+  --ink: #edf2ff;
+  --muted: #a9b5d0;
+  --accent: #8ba4ff;
+  --accent-hover: #adc0ff;
+  --accent-ink: #10182b;
+  --highlight: #ffda68;
+  --line: #2b3854;
+  --shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
 }
 
-/* ---------- Base ---------- */
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* ==============================
+   2. RESET AND BASE
+============================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
 
 body {
   margin: 0;
   font-family: var(--font);
   background: var(--bg);
   color: var(--ink);
-  line-height: 1.65;
+  line-height: 1.7;
+  transition: background 0.25s, color 0.25s;
 }
 
-a { color: var(--accent); }
-code {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 0.1em 0.4em;
-  font-size: 0.92em;
+a {
+  color: var(--accent);
 }
 
-:focus-visible {
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible {
   outline: 3px solid var(--accent);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
-/* ---------- Header ---------- */
+section[id] {
+  scroll-margin-top: 85px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+p {
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ==============================
+   3. HEADER AND NAVIGATION
+============================== */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  padding: 0.9rem clamp(1rem, 5vw, 3rem);
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(8px);
+  padding: 0.85rem clamp(1rem, 5vw, 4rem);
+  background: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
 .logo {
-  font-weight: 800;
-  text-decoration: none;
   color: var(--ink);
+  font-size: 1.3rem;
+  font-weight: 850;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: -0.04em;
 }
 
-.site-header nav {
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.15rem;
 }
 
-.site-header nav a {
+.nav-links > a {
   color: var(--muted);
   text-decoration: none;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 650;
+  transition: color 0.2s;
 }
-.site-header nav a:hover { color: var(--accent); }
 
-.icon-btn {
+.nav-links > a:hover {
+  color: var(--accent);
+}
+
+.icon-btn,
+.menu-btn {
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--ink);
-  width: 2.4rem;
-  height: 2.4rem;
   border-radius: 50%;
-  font-size: 1.1rem;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
 }
 
-/* ---------- Hero ---------- */
+.icon-btn {
+  font-size: 1.2rem;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 1.35rem;
+}
+
+/* ==============================
+   4. HERO SECTION
+============================== */
 .hero {
-  padding: clamp(4rem, 14vw, 9rem) clamp(1rem, 5vw, 3rem) clamp(3rem, 9vw, 6rem);
-  max-width: 62rem;
-  margin: 0 auto;
+  max-width: 1240px;
+  min-height: 570px;
+  margin: auto;
+  padding: clamp(4rem, 9vw, 7.5rem) clamp(1rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-kicker,
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
 }
 
 .hero-kicker {
   display: inline-block;
-  margin: 0 0 1rem;
-  padding: 0.25rem 0.8rem;
-  background: var(--highlight);
-  color: #14213d;
+  padding: 0.4rem 0.85rem;
+  background: var(--surface-alt);
   border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.9rem;
 }
 
 .hero h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(2.4rem, 8vw, 5.2rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  margin: 1rem 0;
+  font-size: clamp(2.5rem, 5.5vw, 4.7rem);
+  line-height: 1.1;
+  letter-spacing: -0.065em;
 }
 
-.typed { color: var(--accent); }
+.typed {
+  color: var(--accent);
+}
+
 .typed::after {
   content: "";
   display: inline-block;
-  width: 0.08em;
-  height: 0.9em;
-  margin-left: 0.08em;
+  width: 3px;
+  height: 0.85em;
+  margin-left: 4px;
   background: currentColor;
-  vertical-align: -0.08em;
-  animation: blink 1s steps(1) infinite;
+  animation: blink 0.8s steps(1) infinite;
 }
-@keyframes blink { 50% { opacity: 0; } }
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 .hero-sub {
-  max-width: 34rem;
+  max-width: 590px;
   color: var(--muted);
-  font-size: 1.2rem;
-  margin: 0 0 2rem;
+  font-size: 1.08rem;
+}
+
+.hero-actions,
+.contact-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.8rem;
 }
 
 .btn {
-  display: inline-block;
-  border: 0;
-  cursor: pointer;
-  text-decoration: none;
-  font: inherit;
-  font-weight: 700;
-  padding: 0.75rem 1.4rem;
-  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
   background: var(--accent);
   color: var(--accent-ink);
-  transition: transform 0.15s ease;
+  text-decoration: none;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
 }
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0); }
 
-/* ---------- Sections ---------- */
+.btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  color: var(--accent-ink);
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.3rem;
+  margin-top: 3rem;
+}
+
+.hero-stats div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stats strong {
+  font-size: 1.5rem;
+}
+
+.hero-stats span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ==============================
+   5. HERO CODING WINDOW
+============================== */
+.hero-visual {
+  position: relative;
+  min-width: 0;
+  padding: 1rem 0;
+}
+
+.code-window {
+  overflow: hidden;
+  background: #111b30;
+  color: #e6edff;
+  border: 1px solid #30405f;
+  border-radius: 18px;
+  box-shadow: 0 25px 65px rgba(31, 57, 110, 0.2);
+  transform: rotate(1deg);
+}
+
+.window-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1rem;
+  border-bottom: 1px solid #2b3955;
+}
+
+.window-bar > span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff7e83;
+}
+
+.window-bar > span:nth-child(2) {
+  background: #ffce66;
+}
+
+.window-bar > span:nth-child(3) {
+  background: #6ed9a0;
+}
+
+.window-bar small {
+  margin-left: 10px;
+  color: #a9b8d6;
+}
+
+.code-window pre {
+  overflow-x: auto;
+  padding: 1.2rem;
+  font-size: clamp(0.7rem, 1.3vw, 0.95rem);
+  line-height: 1.9;
+}
+
+.code-purple {
+  color: #c5a7ff;
+}
+
+.code-green {
+  color: #91e8ac;
+}
+
+.code-blue {
+  color: #80c7ff;
+}
+
+.code-footer {
+  padding: 0.9rem 1.2rem;
+  color: #91e8ac;
+  border-top: 1px solid #2b3955;
+  font-size: 0.8rem;
+}
+
+.floating-badge {
+  position: absolute;
+  padding: 0.65rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  font-weight: 800;
+}
+
+.badge-one {
+  top: 0;
+  right: -12px;
+  color: var(--accent);
+}
+
+.badge-two {
+  bottom: 0;
+  left: -18px;
+}
+
+/* ==============================
+   6. COMMON SECTIONS
+============================== */
 .section {
-  max-width: 62rem;
-  margin: 0 auto;
-  padding: clamp(2.5rem, 7vw, 4.5rem) clamp(1rem, 5vw, 3rem);
-  border-top: 1px solid var(--line);
+  max-width: 1240px;
+  margin: auto;
+  padding: clamp(4rem, 7vw, 6.5rem) clamp(1rem, 5vw, 4rem);
 }
 
-.section h2 {
-  margin: 0 0 1rem;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  letter-spacing: -0.02em;
+.section-alt {
+  max-width: none;
+  background: var(--surface-alt);
 }
 
-.section p { max-width: 42rem; color: var(--muted); }
+.section-alt > * {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-/* ---------- Team cards ---------- */
-.team-grid {
+.section-heading {
+  max-width: 690px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.section-heading h2,
+.contact-panel h2 {
+  margin: 0 0 0.8rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+}
+
+.section-heading > p:last-child {
+  color: var(--muted);
+}
+
+.eyebrow {
+  margin-bottom: 0.65rem;
+}
+
+/* ==============================
+   7. ABOUT SECTION
+============================== */
+.about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: 1.25rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
 }
 
-.card {
+.info-card,
+.skill-card,
+.project-card,
+.workflow-card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.feature-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1rem;
+  background: var(--surface-alt);
+  border-radius: 14px;
+  font-size: 1.6rem;
+}
+
+.info-card h3,
+.skill-card h3,
+.workflow-card h3 {
+  margin: 0 0 0.6rem;
+}
+
+.info-card p,
+.skill-card p,
+.workflow-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.story-panel {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 2rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.story-panel h3 {
+  margin: 0;
+  font-size: 1.65rem;
+}
+
+.story-panel > p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ==============================
+   8. TEAM CARDS
+============================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
 }
 
 .avatar {
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 50%;
   display: grid;
   place-items: center;
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #14213d;
+  width: 66px;
+  height: 66px;
+  margin-bottom: 1.1rem;
+  border-radius: 20px;
   background: var(--highlight);
-  margin-bottom: 1rem;
+  color: #17213d;
+  font-size: 1.45rem;
+  font-weight: 850;
 }
 
-.card h3 { margin: 0; font-size: 1.3rem; }
-.card .role { margin: 0 0 0.75rem; color: var(--accent); font-weight: 700; }
-.card .bio { margin: 0 0 1rem; }
-.card a { font-weight: 600; }
+.card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
 
-/* ---------- Skill chips ---------- */
+.card .role {
+  margin: 0.2rem 0 0.75rem;
+  color: var(--accent);
+  font-weight: 750;
+}
+
+.card .bio {
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.card a {
+  display: inline-block;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   9. SKILLS
+============================== */
 .chips {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 0 0 2rem;
   padding: 0;
-  margin: 1.25rem 0 0;
+  list-style: none;
 }
 
 .chips li {
-  padding: 0.4rem 1rem;
+  padding: 0.55rem 1rem;
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--surface);
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
-.status { min-height: 1.5rem; margin-top: 0.75rem; color: var(--accent); font-weight: 600; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
 
-/* ---------- Footer ---------- */
-.site-footer {
-  text-align: center;
-  padding: 2rem 1rem 3rem;
+.skill-card small {
+  display: block;
+  margin-top: 0.8rem;
   color: var(--muted);
+}
+
+.progress-track {
+  height: 8px;
+  margin-top: 1.3rem;
+  overflow: hidden;
+  background: var(--line);
+  border-radius: 99px;
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+}
+
+.note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ==============================
+   10. LEARNING ROADMAP
+============================== */
+.roadmap {
+  max-width: 850px;
+  margin: auto;
+}
+
+.roadmap-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.roadmap-number {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 850;
+}
+
+.roadmap-item h3 {
+  margin: 0 0 0.35rem;
+}
+
+.roadmap-item p {
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  color: var(--accent);
+  font-size: 0.77rem;
+  font-weight: 800;
+}
+
+/* ==============================
+   11. PROJECT CARDS
+============================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.3rem;
+}
+
+.project-card {
+  overflow: hidden;
+  padding: 0;
+  transition: transform 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+.project-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 185px;
+  overflow: hidden;
+}
+
+.project-visual > span {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.visual-blue {
+  background: linear-gradient(135deg, #dbe7ff, #a9c0ff);
+  color: #2147a7;
+}
+
+.visual-yellow {
+  background: linear-gradient(135deg, #fff2c6, #ffd77d);
+  color: #70500c;
+}
+
+.visual-purple {
+  background: linear-gradient(135deg, #e9ddff, #c5a7ff);
+  color: #5735a5;
+}
+
+.project-symbol {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.project-content {
+  padding: 1.4rem;
+}
+
+.project-content h3 {
+  margin: 0.8rem 0 0.5rem;
+}
+
+.project-content > p:not(.project-tech) {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.project-tech {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--accent);
+}
+
+/* ==============================
+   12. GIT WORKFLOW
+============================== */
+.workflow-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.workflow-card .step {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 900;
+}
+
+.workflow-card code {
+  display: block;
+  overflow-wrap: anywhere;
+  margin-top: 0.8rem;
+  padding: 0.6rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.78rem;
+}
+
+.callout {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 14px 14px 0;
+}
+
+.callout h3 {
+  margin-top: 0;
+}
+
+.callout p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   13. FAQ
+============================== */
+.faq-list {
+  max-width: 850px;
+  margin: auto;
+}
+
+.faq-list details {
+  margin-bottom: 0.8rem;
+  padding: 1.1rem 1.3rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.faq-list details p {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+}
+
+/* ==============================
+   14. CONTACT
+============================== */
+.contact-panel {
+  padding: clamp(2rem, 6vw, 4rem);
+  text-align: center;
+  background: var(--surface-alt);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+}
+
+.contact-panel > p:not(.eyebrow, .status, .contact-note) {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+.contact-actions {
+  justify-content: center;
+}
+
+.status {
+  min-height: 1.5rem;
+  margin: 1rem 0 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.contact-note {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+/* ==============================
+   15. FOOTER
+============================== */
+.site-footer {
+  padding: 2.5rem 1rem;
+  text-align: center;
   border-top: 1px solid var(--line);
 }
 
-/* ---------- Respect reduced motion ---------- */
+.site-footer p {
+  color: var(--muted);
+  margin: 0.7rem 0 0;
+  font-size: 0.9rem;
+}
+
+/* ==============================
+   16. RESPONSIVE DESIGN
+============================== */
+@media (max-width: 1000px) {
+  .nav-links {
+    gap: 0.7rem;
+  }
+
+  .nav-links > a {
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    gap: 2rem;
+  }
+
+  .workflow-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links > a {
+    padding: 0.55rem 0.75rem;
+    font-size: 1rem;
+  }
+
+  .nav-links .icon-btn {
+    align-self: flex-start;
+    margin: 0.25rem 0.75rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 4rem;
+  }
+
+  .hero-visual {
+    max-width: 570px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .about-grid,
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-panel {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .about-grid,
+  .skills-grid,
+  .projects-grid,
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-stats {
+    gap: 1.4rem;
+  }
+
+  .hero-actions .btn,
+  .contact-actions .btn {
+    width: 100%;
+  }
+
+  .roadmap-item {
+    grid-template-columns: 42px 1fr;
+    gap: 0.85rem;
+  }
+
+  .roadmap-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .floating-badge {
+    font-size: 0.8rem;
+  }
+
+  .badge-one {
+    right: 0;
+  }
+
+  .badge-two {
+    left: 0;
+  }
+}
+
+/* ==============================
+   17. REDUCED MOTION
+============================== */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .typed::after { animation: none; }
-  .btn { transition: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .typed::after {
+    animation: none;
+  }
 }
