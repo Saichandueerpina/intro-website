@@ -11,7 +11,7 @@ const members = [
     link: "https://github.com/"
   },
   {
-    name: "Your Friend",
+    name: "EERPINA SAI CHANDU",
     role: "Web Developer",
     bio: "Interested in creating user-friendly websites, solving coding problems, and learning new technologies.",
     link: "https://github.com/"
