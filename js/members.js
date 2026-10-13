@@ -6,7 +6,7 @@
 const members = [
   {
     name: "Mani Krishna",
-    role: "Frontend Developer",
+    role: "Gen AI Developer",
     bio: "Learning HTML, CSS, JavaScript, responsive design, and GitHub collaboration by building practical web projects.",
     link: "https://github.com/"
   },
@@ -17,8 +17,8 @@ const members = [
     link: "https://github.com/"
   },
   {
-    name: "Team Member 3",
-    role: "UI Designer",
+    name: "Vishwak Reddy",
+    role: "Gen AI Developer",
     bio: "Exploring website layouts, typography, color combinations, accessibility, and modern user interface design.",
     link: "https://github.com/"
   }
